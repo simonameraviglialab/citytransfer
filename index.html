@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>City Transfer | Servizio NCC a Vicenza</title>
+  <meta name="description" content="Servizio NCC a Vicenza per privati e aziende. Transfer aeroportuali, servizi business, minivan e trasporto accessibile. Richiedi un preventivo.">
+  <meta name="theme-color" content="#101C2C">
+  <meta property="og:title" content="City Transfer | Servizio NCC a Vicenza">
+  <meta property="og:description" content="Servizio NCC a Vicenza per privati e aziende. Transfer aeroportuali, servizi business, minivan e trasporto accessibile.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="it_IT">
+  <!-- Favicon provvisoria: sostituire con il logo reale (images/favicon.png) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101C2C'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' fill='%23C5A675' text-anchor='middle'%3ECT%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --notte:#101C2C;
+      --notte-2:#0B1420;
+      --petrolio:#24465A;
+      --bianco:#F8F8F5;
+      --grigio:#E9ECEF;
+      --oro:#C5A675;
+      --oro-scuro:#8A6D3F;
+      --testo:#1B2533;
+      --muted:#55606E;
+      --linea:rgba(16,28,44,.12);
+      --serif:'DM Serif Display', Georgia, 'Times New Roman', serif;
+      --sans:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --raggio:14px;
+      --max:1180px;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.65;color:var(--testo);background:var(--bianco);-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+    a{color:inherit}
+    h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.15;margin:0;letter-spacing:-.01em}
+    p{margin:0}
+    .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 22px}
+    .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    :focus-visible{outline:2px solid var(--oro);outline-offset:3px;border-radius:4px}
+
+    /* ---------- Bottoni ---------- */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 26px;border-radius:999px;font:600 13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .25s}
+    .btn svg{width:18px;height:18px;flex:none}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-oro{background:var(--oro);color:var(--notte)}
+    .btn-oro:hover{background:#d4b98c}
+    .btn-ghost{border-color:rgba(248,248,245,.45);color:var(--bianco)}
+    .btn-ghost:hover{border-color:var(--oro);color:var(--oro)}
+    .btn-notte{background:var(--notte);color:var(--bianco)}
+    .btn-notte:hover{background:var(--petrolio)}
+    .btn-linea{border-color:var(--notte);color:var(--notte)}
+    .btn-linea:hover{background:var(--notte);color:var(--bianco)}
+
+    /* ---------- Header ---------- */
+    .header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,box-shadow .3s,padding .3s;padding:18px 0}
+    .header.scrolled{background:rgba(16,28,44,.96);backdrop-filter:blur(8px);box-shadow:0 8px 30px rgba(0,0,0,.18);padding:10px 0}
+    .header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--bianco)}
+    .logo-mark{width:40px;height:40px;border:1px solid var(--oro);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);color:var(--oro);font-size:17px}
+    .logo-text{font-family:var(--serif);font-size:22px;line-height:1}
+    .logo-text small{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(248,248,245,.65);margin-top:5px}
+    .nav{display:none}
+    .nav ul{list-style:none;margin:0;padding:0;display:flex;gap:28px}
+    .nav a{text-decoration:none;color:rgba(248,248,245,.85);font-size:14px;font-weight:500;transition:color .2s}
+    .nav a:hover{color:var(--oro)}
+    .header-cta{display:none}
+    .header-cta.btn{min-height:44px;padding:10px 20px}
+    .burger{width:46px;height:46px;border:1px solid rgba(248,248,245,.35);border-radius:50%;background:transparent;color:var(--bianco);display:grid;place-items:center;cursor:pointer}
+    .burger span{display:block;width:18px;height:1.5px;background:currentColor;position:relative;transition:background .2s}
+    .burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:currentColor;transition:transform .25s}
+    .burger span::before{top:-6px}.burger span::after{top:6px}
+    .menu-open .burger span{background:transparent}
+    .menu-open .burger span::before{transform:translateY(6px) rotate(45deg)}
+    .menu-open .burger span::after{transform:translateY(-6px) rotate(-45deg)}
+    .mobile-menu{position:fixed;inset:0;z-index:40;background:var(--notte);padding:110px 28px 40px;display:flex;flex-direction:column;gap:6px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+    .menu-open .mobile-menu{opacity:1;visibility:visible}
+    .mobile-menu a{font-family:var(--serif);font-size:30px;color:var(--bianco);text-decoration:none;padding:8px 0;border-bottom:1px solid rgba(248,248,245,.08)}
+    .mobile-menu .btn{margin-top:26px;font-family:var(--sans);font-size:13px;border-bottom:0}
+    @media (min-width:1024px){
+      .nav,.header-cta{display:flex}
+      .burger,.mobile-menu{display:none}
+    }
+
+    /* ---------- Segnaposto immagini ---------- */
+    .media{position:relative;overflow:hidden;background:
+      radial-gradient(ellipse at 75% 20%, rgba(197,166,117,.22), transparent 55%),
+      linear-gradient(140deg, var(--petrolio) 0%, var(--notte) 75%)}
+    .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;color:transparent}
+    .ph-label{position:absolute;left:14px;bottom:12px;font-size:11px;letter-spacing:.06em;color:rgba(248,248,245,.6);background:rgba(11,20,32,.45);padding:4px 9px;border-radius:999px;border:1px dashed rgba(197,166,117,.45)}
+
+    /* ---------- Hero ---------- */
+    .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;color:var(--bianco);padding:130px 0 70px}
+    .hero .media{position:absolute;inset:0}
+    .hero .media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,28,44,.75) 0%,rgba(16,28,44,.25) 70%),linear-gradient(180deg,rgba(16,28,44,.55) 0%,rgba(16,28,44,.35) 35%,rgba(16,28,44,.92) 100%)}
+    .hero .ph-label{z-index:2;left:auto;right:22px;bottom:auto;top:96px}
+    .hero-lines{position:absolute;inset:0;z-index:1;opacity:.5;pointer-events:none}
+    .hero-content{position:relative;z-index:2;max-width:760px}
+    .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:22px}
+    .eyebrow::before{content:"";width:34px;height:1px;background:var(--oro)}
+    .hero h1{font-size:clamp(40px,8.5vw,78px);margin-bottom:22px}
+    .hero h1 em{font-style:italic;color:var(--oro)}
+    .hero p.lead{font-size:clamp(16px,2.2vw,19px);color:rgba(248,248,245,.85);max-width:600px;margin-bottom:34px}
+    .cta-row{display:flex;flex-direction:column;gap:12px}
+    @media (min-width:560px){.cta-row{flex-direction:row;flex-wrap:wrap}}
+    .hero-note{margin-top:34px;padding-top:22px;border-top:1px solid rgba(248,248,245,.15);font-size:13px;letter-spacing:.08em;color:rgba(248,248,245,.7);display:flex;align-items:center;gap:10px}
+    .hero-note svg{width:16px;height:16px;color:var(--oro)}
+    @media (min-width:900px){.hero{align-items:center;padding-bottom:90px}}
+
+    /* ---------- Sezioni ---------- */
+    section{scroll-margin-top:70px}
+    .sec{padding:84px 0}
+    @media (min-width:900px){.sec{padding:120px 0}}
+    .sec-head{max-width:720px;margin-bottom:48px}
+    .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+    .sec-head.center .eyebrow{justify-content:center}
+    .kicker{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--oro-scuro);margin-bottom:16px}
+    .kicker::before{content:"";width:28px;height:1px;background:var(--oro)}
+    .sec-head h2{font-size:clamp(32px,5.5vw,52px);color:var(--notte);margin-bottom:16px}
+    .sec-head p{color:var(--muted);font-size:17px}
+    .bg-grigio{background:var(--grigio)}
+
+    /* ---------- Servizi ---------- */
+    .grid-servizi{display:grid;gap:22px}
+    @media (min-width:640px){.grid-servizi{grid-template-columns:repeat(2,1fr)}}
+    @media (min-width:1000px){.grid-servizi{grid-template-columns:repeat(3,1fr)}}
+    .card{background:#fff;border-radius:var(--raggio);overflow:hidden;border:1px solid var(--linea);display:flex;flex-direction:column;transition:transform .35s,box-shadow .35s}
+    .card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(16,28,44,.1)}
+    .card .media{aspect-ratio:16/10}
+    .card .ph-label{top:12px;bottom:auto}
+    .card-body{padding:30px 26px 28px;position:relative;flex:1}
+    .icon-badge{position:absolute;top:-26px;left:26px;width:52px;height:52px;border-radius:50%;background:var(--notte);color:var(--oro);display:grid;place-items:center;box-shadow:0 0 0 5px #fff}
+    .icon-badge svg{width:22px;height:22px}
+    .card h3{font-size:24px;color:var(--notte);margin:8px 0 10px}
+    .card p{color:var(--muted);font-size:15px}
+
+    /* ---------- Flotta ---------- */
+    .grid-flotta{display:grid;gap:26px}
+    @media (min-width:900px){.grid-flotta{grid-template-columns:repeat(3,1fr)}}
+    .veicolo{position:relative;border-radius:18px;overflow:hidden;color:var(--bianco);min-height:460px;display:flex;align-items:flex-end;isolation:isolate}
+    .veicolo .media{position:absolute;inset:0;z-index:-1}
+    .veicolo .media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,28,44,0) 30%,rgba(16,28,44,.92) 100%)}
+    .veicolo .ph-label{top:16px;bottom:auto;left:16px;z-index:2}
+    .veicolo .media img{transition:transform 1.2s ease}
+    .veicolo:hover .media img{transform:scale(1.05)}
+    .veicolo-body{padding:30px 28px}
+    .veicolo-num{font-family:var(--serif);font-size:15px;color:var(--oro);letter-spacing:.1em;display:block;margin-bottom:6px}
+    .veicolo h3{font-size:34px;margin-bottom:10px}
+    .veicolo p{color:rgba(248,248,245,.82);font-size:15px;max-width:340px}
+    @media (min-width:900px){.veicolo{min-height:560px}.veicolo:nth-child(2){transform:translateY(40px)}}
+    .flex-banner{margin-top:70px;background:var(--notte);color:var(--bianco);border-radius:18px;padding:36px 30px;display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+    .flex-banner h3{font-size:clamp(24px,3.5vw,32px)}
+    .flex-banner h3 em{color:var(--oro)}
+    .flex-banner p{color:rgba(248,248,245,.78);margin-top:8px;max-width:560px}
+    @media (min-width:900px){.flex-banner{flex-direction:row;align-items:center;justify-content:space-between;padding:44px 50px;margin-top:100px}}
+
+    /* ---------- Vantaggi ---------- */
+    .grid-vantaggi{display:grid;gap:0;border-top:1px solid var(--linea)}
+    @media (min-width:640px){.grid-vantaggi{grid-template-columns:repeat(2,1fr)}}
+    @media (min-width:1000px){.grid-vantaggi{grid-template-columns:repeat(4,1fr);border-top:0}}
+    .vantaggio{padding:34px 6px;border-bottom:1px solid var(--linea)}
+    @media (min-width:1000px){.vantaggio{padding:10px 30px;border-bottom:0;border-left:1px solid var(--linea)}.vantaggio:first-child{border-left:0;padding-left:0}}
+    .vantaggio svg{width:34px;height:34px;color:var(--oro-scuro);stroke-width:1.3;margin-bottom:20px}
+    .vantaggio h3{font-size:26px;color:var(--notte);margin-bottom:10px}
+    .vantaggio p{color:var(--muted);font-size:15px}
+
+    /* ---------- Aziende ---------- */
+    .aziende{background:var(--notte);color:var(--bianco);position:relative;overflow:hidden}
+    .aziende::before{content:"";position:absolute;right:-180px;top:-180px;width:520px;height:520px;border-radius:50%;border:1px solid rgba(197,166,117,.18)}
+    .aziende::after{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;border-radius:50%;border:1px solid rgba(197,166,117,.12)}
+    .aziende-grid{display:grid;gap:50px;align-items:center;position:relative;z-index:1}
+    @media (min-width:960px){.aziende-grid{grid-template-columns:1.05fr .95fr;gap:80px}}
+    .aziende .kicker{color:var(--oro)}
+    .aziende h2{font-size:clamp(32px,5vw,50px);margin-bottom:24px}
+    .aziende p.testo{color:rgba(248,248,245,.8);font-size:17px;margin-bottom:30px}
+    .check-list{list-style:none;padding:0;margin:0 0 38px;display:grid;gap:14px}
+    .check-list li{display:flex;gap:14px;align-items:flex-start;color:rgba(248,248,245,.9)}
+    .check-list svg{width:20px;height:20px;color:var(--oro);flex:none;margin-top:3px}
+    .aziende .media{aspect-ratio:4/5;border-radius:18px}
+    @media (max-width:959px){.aziende .media{aspect-ratio:16/11}}
+
+    /* ---------- Area operativa ---------- */
+    .area-grid{display:grid;gap:40px;align-items:center}
+    @media (min-width:960px){.area-grid{grid-template-columns:.9fr 1.1fr;gap:70px}}
+    .area-grid .sec-head{margin-bottom:28px}
+    .area-points{list-style:none;padding:0;margin:0;display:grid;gap:16px}
+    .area-points li{display:flex;gap:16px;align-items:flex-start;padding:18px 20px;background:#fff;border-radius:12px;border:1px solid var(--linea)}
+    .area-points svg{width:22px;height:22px;color:var(--petrolio);flex:none;margin-top:2px}
+    .area-points strong{display:block;color:var(--notte);font-weight:600}
+    .area-points span{color:var(--muted);font-size:15px}
+    .mappa{background:var(--notte);border-radius:20px;padding:20px;position:relative;overflow:hidden}
+    .mappa svg{width:100%;height:auto;display:block}
+    .rotta{stroke-dasharray:4 7;animation:scorri 2.4s linear infinite}
+    @keyframes scorri{to{stroke-dashoffset:-44}}
+    .pulse{transform-origin:250px 210px;animation:pulse 2.6s ease-out infinite}
+    .pulse.d2{animation-delay:1.3s}
+    @keyframes pulse{0%{transform:scale(.4);opacity:.8}100%{transform:scale(2.6);opacity:0}}
+
+    /* ---------- CTA finale ---------- */
+    .cta-finale{position:relative;color:var(--bianco);padding:120px 0;text-align:center;overflow:hidden}
+    .cta-finale .media{position:absolute;inset:0}
+    .cta-finale .media::after{content:"";position:absolute;inset:0;background:rgba(16,28,44,.78)}
+    .cta-finale .ph-label{z-index:2}
+    .cta-finale .wrap{position:relative;z-index:2;max-width:820px}
+    .cta-finale h2{font-size:clamp(34px,6vw,60px);margin-bottom:22px}
+    .cta-finale h2 em{color:var(--oro)}
+    .cta-finale p{color:rgba(248,248,245,.85);font-size:18px;max-width:560px;margin:0 auto 38px}
+    .cta-finale .cta-row{justify-content:center;align-items:center}
+    @media (min-width:900px){.cta-finale{padding:170px 0}}
+
+    /* ---------- Contatti + form ---------- */
+    .contatti-grid{display:grid;gap:44px}
+    @media (min-width:1000px){.contatti-grid{grid-template-columns:.8fr 1.2fr;gap:70px}}
+    .info-list{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+    .info-list li{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--linea)}
+    .info-list .ico{width:44px;height:44px;border-radius:50%;background:var(--grigio);display:grid;place-items:center;color:var(--petrolio);flex:none}
+    .info-list .ico svg{width:19px;height:19px}
+    .info-list small{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+    .info-list a,.info-list span.val{color:var(--notte);font-weight:500;text-decoration:none;font-size:16px}
+    .info-list a:hover{color:var(--petrolio);text-decoration:underline}
+    .form-box{background:#fff;border:1px solid var(--linea);border-radius:20px;padding:30px 22px;box-shadow:0 30px 60px rgba(16,28,44,.07)}
+    @media (min-width:640px){.form-box{padding:44px 42px}}
+    .form-box h3{font-size:30px;color:var(--notte);margin-bottom:6px}
+    .form-box > p{color:var(--muted);margin-bottom:28px;font-size:15px}
+    .form-grid{display:grid;gap:18px}
+    @media (min-width:640px){.form-grid{grid-template-columns:1fr 1fr}.full{grid-column:1/-1}}
+    .campo label{display:block;font-size:13px;font-weight:600;color:var(--notte);margin-bottom:7px}
+    .campo label .opz{font-weight:400;color:var(--muted)}
+    .campo input,.campo select,.campo textarea{width:100%;font:inherit;font-size:16px;color:var(--testo);background:var(--bianco);border:1px solid #CCD2D8;border-radius:10px;padding:13px 14px;transition:border-color .2s,box-shadow .2s;appearance:none;-webkit-appearance:none}
+    .campo select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2324465A' stroke-width='1.6' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}
+    .campo textarea{min-height:96px;resize:vertical}
+    .campo input:focus,.campo select:focus,.campo textarea:focus{outline:0;border-color:var(--petrolio);box-shadow:0 0 0 3px rgba(36,70,90,.15)}
+    .privacy{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--muted)}
+    .privacy input{width:20px;height:20px;margin-top:2px;accent-color:var(--notte);flex:none}
+    .form-box .btn{width:100%;margin-top:6px}
+    .form-result{margin-top:24px;padding:24px;border-radius:14px;background:var(--grigio);border-left:3px solid var(--oro)}
+    .form-result h4{margin:0 0 6px;font-family:var(--serif);font-weight:400;font-size:22px;color:var(--notte)}
+    .form-result p{color:var(--muted);font-size:15px;margin-bottom:16px}
+    .form-result .cta-row .btn{width:auto;margin:0}
+
+    /* ---------- Footer ---------- */
+    .footer{background:var(--notte-2);color:rgba(248,248,245,.72);padding:70px 0 30px;font-size:14px}
+    .footer-grid{display:grid;gap:38px;margin-bottom:50px}
+    @media (min-width:800px){.footer-grid{grid-template-columns:1.4fr 1fr 1fr 1fr}}
+    .footer h4{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin:0 0 16px;font-weight:600}
+    .footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+    .footer a{text-decoration:none;color:rgba(248,248,245,.78)}
+    .footer a:hover{color:var(--oro)}
+    .footer .logo{margin-bottom:16px}
+    .social{display:flex;gap:10px}
+    .social a{width:40px;height:40px;border:1px solid rgba(248,248,245,.2);border-radius:50%;display:grid;place-items:center}
+    .social svg{width:17px;height:17px}
+    .footer-bottom{border-top:1px solid rgba(248,248,245,.1);padding-top:24px;display:flex;flex-direction:column;gap:12px;font-size:13px}
+    @media (min-width:800px){.footer-bottom{flex-direction:row;justify-content:space-between}}
+    .footer-bottom .legal{display:flex;gap:20px;flex-wrap:wrap}
+
+    /* ---------- WhatsApp flottante ---------- */
+    .wa-float{position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:transform .25s}
+    .wa-float:hover{transform:scale(1.07)}
+    .wa-float svg{width:28px;height:28px}
+
+    /* ---------- Animazioni ---------- */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+    .reveal.in{opacity:1;transform:none}
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .reveal{opacity:1;transform:none;transition:none}
+      .rotta,.pulse{animation:none}
+      .card,.btn,.veicolo .media img{transition:none}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Icone (definite una volta, riusate con <use>) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+    <symbol id="i-access" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="4" r="1"/><path d="m18 19 1-7-6 1"/><path d="m5 8 3-3 5.5 3-2.36 3.5"/><path d="M4.24 14.5a5 5 0 0 0 6.88 6"/><path d="M13.76 17.5a5 5 0 0 0-6.88-6"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+    <symbol id="i-seat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/><path d="M5 18v2M19 18v2"/></symbol>
+    <symbol id="i-flex" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m17 1 4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="m7 23-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.41Z"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+  </defs>
+</svg>
+
+<a class="sr-only" href="#servizi">Vai al contenuto</a>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="top">
+  <div class="wrap">
+    <!-- Logo provvisorio: sostituire con <img src="images/logo.svg" alt="City Transfer"> quando disponibile -->
+    <a href="#top" class="logo" aria-label="City Transfer, torna all'inizio">
+      <span class="logo-mark">CT</span>
+      <span class="logo-text">City Transfer<small>Servizio NCC</small></span>
+    </a>
+    <nav class="nav" aria-label="Menu principale">
+      <ul>
+        <li><a href="#servizi">Servizi</a></li>
+        <li><a href="#flotta">Flotta</a></li>
+        <li><a href="#perche">Perché noi</a></li>
+        <li><a href="#aziende">Aziende</a></li>
+        <li><a href="#area">Area operativa</a></li>
+        <li><a href="#contatti">Contatti</a></li>
+      </ul>
+    </nav>
+    <a href="#contatti" class="btn btn-oro header-cta">Preventivo</a>
+    <button class="burger" aria-label="Apri il menu" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#servizi">Servizi</a>
+  <a href="#flotta">Flotta</a>
+  <a href="#perche">Perché noi</a>
+  <a href="#aziende">Aziende</a>
+  <a href="#area">Area operativa</a>
+  <a href="#contatti">Contatti</a>
+  <a href="#contatti" class="btn btn-oro">Richiedi un preventivo</a>
+</div>
+
+<main>
+
+<!-- ============ 1. HERO ============ -->
+<section class="hero">
+  <div class="media">
+    <img src="images/hero.jpg" alt="Auto executive con conducente in un contesto urbano elegante" fetchpriority="high" width="1920" height="1080">
+    <span class="ph-label">Foto: images/hero.jpg</span>
+  </div>
+  <svg class="hero-lines" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path d="M-50 720 C 300 640, 600 760, 900 620 S 1300 520, 1500 560" stroke="#C5A675" stroke-width="1" fill="none" opacity=".35"/>
+    <path d="M-50 770 C 320 700, 640 810, 940 680 S 1320 590, 1500 620" stroke="#C5A675" stroke-width=".6" fill="none" opacity=".2"/>
+  </svg>
+  <div class="wrap">
+    <div class="hero-content">
+      <span class="eyebrow">NCC · Vicenza</span>
+      <h1>Il tuo viaggio, il nostro modo di <em>accompagnarti.</em></h1>
+      <p class="lead">Servizio NCC a Vicenza e dintorni. Trasferimenti privati e aziendali, con il comfort, la puntualità e la flessibilità che ogni spostamento merita.</p>
+      <div class="cta-row">
+        <a href="#contatti" class="btn btn-oro">Richiedi un preventivo <svg><use href="#i-arrow"/></svg></a>
+        <a href="https://wa.me/39NUMERO?text=Buongiorno%2C%20vorrei%20informazioni%20su%20un%20transfer." class="btn btn-ghost" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> Contattaci su WhatsApp</a>
+      </div>
+      <p class="hero-note"><svg><use href="#i-pin"/></svg> Servizio privato con conducente · Vicenza e provincia</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. SERVIZI ============ -->
+<section class="sec" id="servizi">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">I nostri servizi</span>
+      <h2>Ogni destinazione, una soluzione su misura.</h2>
+      <p>Spostamenti di lavoro, viaggi personali, gruppi o esigenze di mobilità particolari: organizziamo ogni trasferimento in base a chi viaggia e a dove deve arrivare.</p>
+    </div>
+
+    <div class="grid-servizi">
+      <article class="card reveal">
+        <div class="media"><img src="images/servizio-aeroporto.jpg" alt="Transfer verso aeroporto con conducente" loading="lazy" width="800" height="500"><span class="ph-label">images/servizio-aeroporto.jpg</span></div>
+        <div class="card-body">
+          <span class="icon-badge"><svg><use href="#i-plane"/></svg></span>
+          <h3>Transfer aeroportuali e stazioni</h3>
+          <p>Trasferimenti da e verso aeroporti, stazioni ferroviarie e altri hub di trasporto, con servizio prenotato e organizzato in anticipo.</p>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="media"><img src="images/servizio-business.jpg" alt="Professionista accompagnato a un appuntamento di lavoro" loading="lazy" width="800" height="500"><span class="ph-label">images/servizio-business.jpg</span></div>
+        <div class="card-body">
+          <span class="icon-badge"><svg><use href="#i-briefcase"/></svg></span>
+          <h3>Servizi business</h3>
+          <p>Spostamenti per aziende, manager, professionisti, clienti e collaboratori. Trasferimenti per meeting, fiere, eventi e appuntamenti di lavoro.</p>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="media"><img src="images/servizio-privati.jpg" alt="Passeggeri in viaggio per un'occasione speciale" loading="lazy" width="800" height="500"><span class="ph-label">images/servizio-privati.jpg</span></div>
+        <div class="card-body">
+          <span class="icon-badge"><svg><use href="#i-star"/></svg></span>
+          <h3>Servizi per privati</h3>
+          <p>Trasporti personalizzati per occasioni speciali, eventi, cerimonie, turismo e spostamenti personali.</p>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="media"><img src="images/servizio-accessibile.jpg" alt="Veicolo attrezzato per il trasporto di una persona in carrozzina" loading="lazy" width="800" height="500"><span class="ph-label">images/servizio-accessibile.jpg</span></div>
+        <div class="card-body">
+          <span class="icon-badge"><svg><use href="#i-access"/></svg></span>
+          <h3>Trasporto accessibile</h3>
+          <p>Soluzioni dedicate a persone con disabilità o mobilità ridotta, con veicoli appositamente attrezzati e attenzione alle esigenze individuali.</p>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="media"><img src="images/servizio-minivan.jpg" alt="Minivan per piccoli gruppi con bagagli" loading="lazy" width="800" height="500"><span class="ph-label">images/servizio-minivan.jpg</span></div>
+        <div class="card-body">
+          <span class="icon-badge"><svg><use href="#i-users"/></svg></span>
+          <h3>Servizio minivan</h3>
+          <p>Trasferimenti per piccoli gruppi, famiglie, delegazioni aziendali e passeggeri con bagagli.</p>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="media"><img src="images/servizio-personalizzato.jpg" alt="Conducente che organizza un trasferimento programmato" loading="lazy" width="800" height="500"><span class="ph-label">images/servizio-personalizzato.jpg</span></div>
+        <div class="card-body">
+          <span class="icon-badge"><svg><use href="#i-calendar"/></svg></span>
+          <h3>Servizi personalizzati</h3>
+          <p>Possibilità di organizzare trasferimenti programmati e soluzioni di trasporto in base alle necessità del cliente.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. FLOTTA ============ -->
+<section class="sec bg-grigio" id="flotta">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">La nostra flotta</span>
+      <h2>Il veicolo giusto per ogni esigenza.</h2>
+      <p>Un incontro di lavoro, una famiglia con le valigie, un passeggero che viaggia in carrozzina: ogni spostamento è diverso. Per questo la flotta comprende veicoli differenti, da scegliere in base al viaggio.</p>
+    </div>
+
+    <div class="grid-flotta">
+      <article class="veicolo reveal">
+        <div class="media"><img src="images/flotta-executive.jpg" alt="Auto executive di City Transfer" loading="lazy" width="900" height="1200"><span class="ph-label">images/flotta-executive.jpg</span></div>
+        <div class="veicolo-body">
+          <span class="veicolo-num">01</span>
+          <h3>Executive Car</h3>
+          <p>Automobile elegante e confortevole, ideale per trasferimenti privati e servizi business.</p>
+        </div>
+      </article>
+      <article class="veicolo reveal">
+        <div class="media"><img src="images/flotta-minivan.jpg" alt="Minivan di City Transfer" loading="lazy" width="900" height="1200"><span class="ph-label">images/flotta-minivan.jpg</span></div>
+        <div class="veicolo-body">
+          <span class="veicolo-num">02</span>
+          <h3>Minivan</h3>
+          <p>Spazio e comodità per piccoli gruppi, famiglie e trasferimenti aziendali.</p>
+        </div>
+      </article>
+      <article class="veicolo reveal">
+        <div class="media"><img src="images/flotta-mobility.jpg" alt="Veicolo attrezzato per persone in carrozzina" loading="lazy" width="900" height="1200"><span class="ph-label">images/flotta-mobility.jpg</span></div>
+        <div class="veicolo-body">
+          <span class="veicolo-num">03</span>
+          <h3>Mobility Vehicle</h3>
+          <p>Veicolo attrezzato per il trasporto di persone in carrozzina o con mobilità ridotta.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="flex-banner reveal">
+      <div>
+        <h3>Una flotta pensata per <em>adattarsi a te.</em></h3>
+        <p>Non sai quale veicolo scegliere? Raccontaci chi viaggia, quanti bagagli avete e dove dovete andare: ti indichiamo noi la soluzione più adatta.</p>
+      </div>
+      <a href="#contatti" class="btn btn-oro">Richiedi un preventivo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. PERCHÉ SCEGLIERCI ============ -->
+<section class="sec" id="perche">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Perché scegliere City Transfer</span>
+      <h2>Viaggiare bene inizia dalla scelta giusta.</h2>
+    </div>
+    <div class="grid-vantaggi">
+      <div class="vantaggio reveal">
+        <svg><use href="#i-award"/></svg>
+        <h3>Professionalità</h3>
+        <p>Un servizio curato e un conducente attento alle esigenze del passeggero.</p>
+      </div>
+      <div class="vantaggio reveal">
+        <svg><use href="#i-clock"/></svg>
+        <h3>Puntualità</h3>
+        <p>Organizzazione degli spostamenti e attenzione ai tempi del cliente.</p>
+      </div>
+      <div class="vantaggio reveal">
+        <svg><use href="#i-seat"/></svg>
+        <h3>Comfort</h3>
+        <p>Veicoli selezionati per offrire un'esperienza di viaggio piacevole.</p>
+      </div>
+      <div class="vantaggio reveal">
+        <svg><use href="#i-flex"/></svg>
+        <h3>Flessibilità</h3>
+        <p>Soluzioni per privati, aziende, gruppi e persone con esigenze di mobilità specifiche.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. CLIENTI BUSINESS ============ -->
+<section class="sec aziende" id="aziende">
+  <div class="wrap">
+    <div class="aziende-grid">
+      <div class="reveal">
+        <span class="kicker">Clienti business</span>
+        <h2>Un partner affidabile per la mobilità della tua azienda.</h2>
+        <p class="testo">Organizzare gli spostamenti di collaboratori, manager e ospiti è parte integrante di un'esperienza professionale di qualità. City Transfer offre soluzioni di trasporto con conducente per aziende e professionisti, con possibilità di pianificare trasferimenti e servizi ricorrenti in base alle necessità operative.</p>
+        <ul class="check-list">
+          <li><svg><use href="#i-check"/></svg>Trasferimenti per meeting, fiere, eventi e appuntamenti di lavoro</li>
+          <li><svg><use href="#i-check"/></svg>Accoglienza di clienti e ospiti da aeroporti e stazioni</li>
+          <li><svg><use href="#i-check"/></svg>Servizi programmati e ricorrenti, pianificati con l'azienda</li>
+        </ul>
+        <a href="#contatti" class="btn btn-oro" data-servizio="Servizio business">Richiedi una soluzione per la tua azienda</a>
+      </div>
+      <div class="media reveal">
+        <img src="images/aziende.jpg" alt="Conducente in abito elegante accoglie un cliente business" loading="lazy" width="900" height="1125">
+        <span class="ph-label">images/aziende.jpg</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. AREA OPERATIVA ============ -->
+<section class="sec bg-grigio" id="area">
+  <div class="wrap">
+    <div class="area-grid">
+      <div class="reveal">
+        <div class="sec-head">
+          <span class="kicker">Area operativa</span>
+          <h2>Partiamo da Vicenza, arriviamo dove hai bisogno.</h2>
+          <p>La sede operativa è a Vicenza. Da qui organizziamo spostamenti in città e in provincia, e trasferimenti verso aeroporti, stazioni, altre città e destinazioni anche fuori regione.</p>
+        </div>
+        <!-- Per aggiungere una nuova città in futuro: duplicare il primo <li> e cambiare il nome -->
+        <ul class="area-points">
+          <li><svg><use href="#i-pin"/></svg><div><strong>Sede operativa: Vicenza</strong><span>Servizio in città e in tutta la provincia.</span></div></li>
+          <li><svg><use href="#i-route"/></svg><div><strong>Trasferimenti su richiesta</strong><span>Verso aeroporti, stazioni, città e altre regioni, da concordare in fase di preventivo.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="mappa reveal" role="img" aria-label="Mappa stilizzata: Vicenza come punto di partenza, con collegamenti verso aeroporti, stazioni, città e altre regioni">
+        <svg viewBox="0 0 500 420" aria-hidden="true">
+          <defs>
+            <pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="#24465A"/></pattern>
+          </defs>
+          <rect width="500" height="420" fill="url(#dots)" opacity=".7"/>
+          <path d="M60 120 C 120 60, 260 40, 360 70 S 470 160, 450 250 S 360 380, 240 370 S 40 330, 50 230 Z" fill="#24465A" opacity=".35"/>
+          <path d="M120 160 C 170 120, 280 110, 340 140 S 400 230, 360 290 S 230 330, 170 300 S 90 210, 120 160 Z" fill="#24465A" opacity=".45"/>
+          <!-- rotte -->
+          <path class="rotta" d="M250 210 Q 170 130 95 95" stroke="#C5A675" stroke-width="1.6" fill="none"/>
+          <path class="rotta" d="M250 210 Q 340 140 410 90" stroke="#C5A675" stroke-width="1.6" fill="none"/>
+          <path class="rotta" d="M250 210 Q 350 260 420 320" stroke="#C5A675" stroke-width="1.6" fill="none"/>
+          <path class="rotta" d="M250 210 Q 160 280 85 330" stroke="#C5A675" stroke-width="1.6" fill="none"/>
+          <!-- nodi -->
+          <g fill="#F8F8F5" font-family="Inter, sans-serif" font-size="13">
+            <circle cx="95" cy="95" r="5" fill="#101C2C" stroke="#C5A675" stroke-width="2"/>
+            <text x="95" y="74" text-anchor="middle">Aeroporti</text>
+            <circle cx="410" cy="90" r="5" fill="#101C2C" stroke="#C5A675" stroke-width="2"/>
+            <text x="410" y="69" text-anchor="middle">Stazioni</text>
+            <circle cx="420" cy="320" r="5" fill="#101C2C" stroke="#C5A675" stroke-width="2"/>
+            <text x="420" y="348" text-anchor="middle">Città e fiere</text>
+            <circle cx="85" cy="330" r="5" fill="#101C2C" stroke="#C5A675" stroke-width="2"/>
+            <text x="85" y="358" text-anchor="middle">Altre regioni</text>
+          </g>
+          <!-- Vicenza -->
+          <circle class="pulse" cx="250" cy="210" r="16" fill="none" stroke="#C5A675" stroke-width="1.5"/>
+          <circle class="pulse d2" cx="250" cy="210" r="16" fill="none" stroke="#C5A675" stroke-width="1.5"/>
+          <circle cx="250" cy="210" r="9" fill="#C5A675"/>
+          <rect x="196" y="230" width="108" height="34" rx="17" fill="#F8F8F5"/>
+          <text x="250" y="252" text-anchor="middle" font-family="DM Serif Display, Georgia, serif" font-size="17" fill="#101C2C">Vicenza</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. CTA FINALE ============ -->
+<section class="cta-finale">
+  <div class="media">
+    <img src="images/cta-finale.jpg" alt="Auto con conducente in attesa del passeggero" loading="lazy" width="1920" height="1080">
+    <span class="ph-label">Foto: images/cta-finale.jpg</span>
+  </div>
+  <div class="wrap reveal">
+    <span class="eyebrow">Richiedi un preventivo</span>
+    <h2>La tua prossima destinazione è <em>a un messaggio di distanza.</em></h2>
+    <p>Raccontaci dove devi andare e di cosa hai bisogno. Troveremo insieme la soluzione di trasporto più adatta.</p>
+    <div class="cta-row">
+      <a href="#contatti" class="btn btn-oro">Richiedi un preventivo <svg><use href="#i-arrow"/></svg></a>
+      <a href="https://wa.me/39NUMERO?text=Buongiorno%2C%20vorrei%20informazioni%20su%20un%20transfer." class="btn btn-ghost" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> Contattaci su WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. CONTATTI + FORM ============ -->
+<section class="sec" id="contatti">
+  <div class="wrap">
+    <div class="contatti-grid">
+      <div class="reveal">
+        <div class="sec-head">
+          <span class="kicker">Contatti</span>
+          <h2>Parliamo del tuo viaggio.</h2>
+          <p>Compila il modulo o contattaci direttamente: ti risponderemo con una proposta pensata per il tuo spostamento.</p>
+        </div>
+        <ul class="info-list">
+          <li><span class="ico"><svg><use href="#i-phone"/></svg></span><div><small>Telefono</small><a href="tel:+39NUMERO">[NUMERO DI TELEFONO]</a></div></li>
+          <li><span class="ico"><svg><use href="#i-wa"/></svg></span><div><small>WhatsApp</small><a href="https://wa.me/39NUMERO" target="_blank" rel="noopener">[NUMERO WHATSAPP]</a></div></li>
+          <li><span class="ico"><svg><use href="#i-mail"/></svg></span><div><small>Email</small><a href="mailto:[EMAIL]">[EMAIL]</a></div></li>
+          <li><span class="ico"><svg><use href="#i-clock"/></svg></span><div><small>Orari e prenotazioni</small><span class="val">[ORARI E MODALITÀ DI PRENOTAZIONE]</span></div></li>
+          <li><span class="ico"><svg><use href="#i-pin"/></svg></span><div><small>Area operativa</small><span class="val">Vicenza e provincia</span></div></li>
+        </ul>
+      </div>
+
+      <div class="form-box reveal">
+        <h3>Richiedi un preventivo</h3>
+        <p>Bastano pochi dati. I campi con * sono obbligatori.</p>
+        <form id="form-preventivo" novalidate>
+          <div class="form-grid">
+            <div class="campo"><label for="f-nome">Nome e cognome *</label><input id="f-nome" name="Nome e cognome" type="text" autocomplete="name" required></div>
+            <div class="campo"><label for="f-tel">Telefono *</label><input id="f-tel" name="Telefono" type="tel" autocomplete="tel" required></div>
+            <div class="campo"><label for="f-email">Email *</label><input id="f-email" name="Email" type="email" autocomplete="email" required></div>
+            <div class="campo">
+              <label for="f-servizio">Tipologia di servizio *</label>
+              <select id="f-servizio" name="Tipologia di servizio" required>
+                <option value="">Seleziona…</option>
+                <option>Transfer aeroporto / stazione</option>
+                <option>Servizio business</option>
+                <option>Servizio per privati</option>
+                <option>Trasporto accessibile</option>
+                <option>Servizio minivan</option>
+                <option>Servizio personalizzato</option>
+              </select>
+            </div>
+            <div class="campo"><label for="f-partenza">Luogo di partenza *</label><input id="f-partenza" name="Partenza" type="text" required></div>
+            <div class="campo"><label for="f-dest">Destinazione *</label><input id="f-dest" name="Destinazione" type="text" required></div>
+            <div class="campo"><label for="f-data">Data *</label><input id="f-data" name="Data" type="date" required></div>
+            <div class="campo"><label for="f-ora">Orario *</label><input id="f-ora" name="Orario" type="time" required></div>
+            <div class="campo"><label for="f-pax">Numero di passeggeri *</label><input id="f-pax" name="Passeggeri" type="number" min="1" inputmode="numeric" required></div>
+            <div class="campo"><label for="f-esigenze">Esigenze particolari <span class="opz">(facoltativo)</span></label><input id="f-esigenze" name="Esigenze particolari" type="text" placeholder="Es. carrozzina, bagagli, seggiolino"></div>
+            <div class="campo full"><label for="f-msg">Messaggio aggiuntivo <span class="opz">(facoltativo)</span></label><textarea id="f-msg" name="Messaggio"></textarea></div>
+            <label class="privacy full"><input type="checkbox" id="f-privacy" required> <span>Ho letto l'<a href="#" data-placeholder="LINK PRIVACY POLICY">informativa privacy</a> e acconsento al trattamento dei dati per ricevere il preventivo. *</span></label>
+            <div class="full"><button type="submit" class="btn btn-notte">Prepara la richiesta <svg><use href="#i-arrow"/></svg></button></div>
+          </div>
+        </form>
+        <div class="form-result" id="form-result" hidden aria-live="polite">
+          <h4>Richiesta pronta</h4>
+          <p>Scegli come inviarcela: si aprirà WhatsApp o la tua email con il messaggio già compilato. La richiesta parte solo quando premi “invia” nell'app.</p>
+          <div class="cta-row">
+            <a class="btn btn-oro" id="send-wa" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> Invia su WhatsApp</a>
+            <a class="btn btn-linea" id="send-mail" href="#"><svg><use href="#i-mail"/></svg> Invia via email</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="logo"><span class="logo-mark">CT</span><span class="logo-text">City Transfer<small>Servizio NCC</small></span></a>
+        <p>Servizio di noleggio con conducente per privati e aziende. Vicenza e provincia.</p>
+      </div>
+      <div>
+        <h4>Servizi</h4>
+        <ul>
+          <li><a href="#servizi">Transfer aeroportuali</a></li>
+          <li><a href="#aziende">Servizi business</a></li>
+          <li><a href="#servizi">Trasporto accessibile</a></li>
+          <li><a href="#flotta">La flotta</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contatti</h4>
+        <ul>
+          <li><a href="tel:+39NUMERO">[NUMERO DI TELEFONO]</a></li>
+          <li><a href="https://wa.me/39NUMERO" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:[EMAIL]">[EMAIL]</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Seguici</h4>
+        <!-- Lasciare solo i social che il cliente usa davvero -->
+        <div class="social">
+          <a href="[LINK INSTAGRAM]" aria-label="Instagram" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg></a>
+          <a href="[LINK FACEBOOK]" aria-label="Facebook" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg></a>
+          <a href="[LINK LINKEDIN]" aria-label="LinkedIn" target="_blank" rel="noopener"><svg><use href="#i-in"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="anno">2026</span> [RAGIONE SOCIALE] · P.IVA [P.IVA]</span>
+      <div class="legal">
+        <a href="#" data-placeholder="LINK PRIVACY POLICY">Privacy Policy</a>
+        <a href="#" data-placeholder="LINK COOKIE POLICY">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/39NUMERO?text=Buongiorno%2C%20vorrei%20informazioni%20su%20un%20transfer." target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp"><svg><use href="#i-wa"/></svg></a>
+
+<script>
+  /* ===== DATI DA PERSONALIZZARE =====
+     Sostituire 39NUMERO con il numero WhatsApp (es. 393401234567, senza + né spazi)
+     e [EMAIL] con l'email reale, anche nel resto della pagina (Cerca e sostituisci). */
+  const WHATSAPP = "39NUMERO";
+  const EMAIL = "[EMAIL]";
+
+  // Foto mancanti: se un'immagine non esiste, resta lo sfondo elegante con l'etichetta
+  document.querySelectorAll('.media img').forEach(img => {
+    const hide = () => img.remove();
+    const loaded = () => { const l = img.parentNode && img.parentNode.querySelector('.ph-label'); if (l) l.remove(); };
+    if (img.complete && img.naturalWidth === 0) hide();
+    else if (img.complete) loaded();
+    img.addEventListener('error', hide);
+    img.addEventListener('load', loaded);
+  });
+
+  // Header che si scurisce allo scroll
+  const header = document.querySelector('.header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Menu mobile
+  const burger = document.querySelector('.burger');
+  burger.addEventListener('click', () => {
+    const open = document.body.classList.toggle('menu-open');
+    burger.setAttribute('aria-expanded', open);
+    burger.setAttribute('aria-label', open ? 'Chiudi il menu' : 'Apri il menu');
+  });
+  document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => {
+    document.body.classList.remove('menu-open');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Bottoni che preselezionano la tipologia di servizio nel modulo
+  document.querySelectorAll('[data-servizio]').forEach(a => a.addEventListener('click', () => {
+    document.getElementById('f-servizio').value = a.dataset.servizio;
+  }));
+
+  // Animazioni leggere all'ingresso delle sezioni
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+
+  // Data minima = oggi
+  const oggi = new Date();
+  document.getElementById('f-data').min = oggi.toISOString().slice(0, 10);
+  document.getElementById('anno').textContent = oggi.getFullYear();
+
+  // Modulo preventivo: prepara il messaggio da inviare via WhatsApp o email
+  const form = document.getElementById('form-preventivo');
+  const result = document.getElementById('form-result');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    const righe = [];
+    form.querySelectorAll('input:not([type=checkbox]), select, textarea').forEach(f => {
+      if (f.value.trim()) {
+        let v = f.value.trim();
+        if (f.type === 'date') v = v.split('-').reverse().join('/');
+        righe.push(f.name + ': ' + v);
+      }
+    });
+    const testo = 'Richiesta preventivo dal sito City Transfer\n\n' + righe.join('\n');
+    document.getElementById('send-wa').href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(testo);
+    document.getElementById('send-mail').href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Richiesta preventivo – City Transfer') + '&body=' + encodeURIComponent(testo);
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>
+</body>
+</html>

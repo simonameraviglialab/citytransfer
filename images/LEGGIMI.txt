@@ -1,0 +1,23 @@
+FOTO DEL SITO CITY TRANSFER
+Le foto attuali sono PROVVISORIE, scaricate da Unsplash (licenza gratuita, uso commerciale consentito: https://unsplash.com/license).
+Prima della consegna, sostituire almeno le foto della FLOTTA con i veicoli reali del cliente
+(le foto attuali mostrano marche specifiche, es. Mercedes e Volkswagen, che potrebbero non corrispondere alla flotta).
+
+Per sostituire una foto: salvare la nuova immagine con LO STESSO NOME e sovrascrivere il file.
+Formato .jpg, larghezza max 1920 px (hero e cta-finale) o 1200 px (le altre), peso sotto i 300 KB.
+
+Nome file                     | Contenuto                                   | ID Unsplash
+hero.jpg                      | berlina nera in città, sera                  | photo-1783184439965-77b816b14a56
+servizio-aeroporto.jpg        | viaggiatrice con valigia fuori dal terminal  | photo-1731755429012-83a172bec732
+servizio-business.jpg         | portiera posteriore aperta, auto executive   | photo-1714348938110-d3692bc3716a
+servizio-privati.jpg          | bouquet da sposa sull'auto                   | photo-1655757457375-c1668c7bc0ad
+servizio-accessibile.jpg      | donna in carrozzina che sale in auto         | photo-1633466154054-399bf16156a2
+servizio-minivan.jpg          | van grigio scuro                             | photo-1775047315770-5a7d1c3f3827
+servizio-personalizzato.jpg   | conducente alla guida                        | photo-1758525747670-a3cfaeb71c38
+flotta-executive.jpg          | berlina nera di lusso (verticale)            | photo-1792813195493-acbfacf5dade
+flotta-minivan.jpg            | van nero al tramonto (verticale)             | photo-1724479839764-65981526641d
+flotta-mobility.jpg           | uomo in carrozzina su pedana del veicolo     | photo-1732194439331-08ec61c4df4f
+aziende.jpg                   | uomo in abito accanto ad auto nera           | photo-1632656269435-77b10f3fcbc6
+cta-finale.jpg                | silhouette di auto nera su fondo scuro       | photo-1485291571150-772bcfc10da5
+
+Per vedere l'originale: https://images.unsplash.com/ + ID (es. https://images.unsplash.com/photo-1783184439965-77b816b14a56)
