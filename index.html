@@ -11,10 +11,29 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="it_IT">
   <!-- Favicon provvisoria: sostituire con il logo reale (images/favicon.png) -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101C2C'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' fill='%23C5A675' text-anchor='middle'%3ECT%3C/text%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="/fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/site-base.css">
+  <link rel="stylesheet" href="/vendor/cookieconsent.css">
+
+  <!-- Google Analytics 4: parte solo con il consenso "Statistiche" -->
+  <script type="text/plain" data-category="analytics" data-service="ga4" src="https://www.googletagmanager.com/gtag/js?id=G-K69Z3D29YG"></script>
+  <script type="text/plain" data-category="analytics" data-service="ga4">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'granted' });
+    gtag('js', new Date());
+    gtag('config', 'G-K69Z3D29YG');
+  </script>
+
+  <!-- Microsoft Clarity: parte solo con il consenso "Statistiche" -->
+  <script type="text/plain" data-category="analytics" data-service="clarity">
+    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","zikj3oge3r");
+    window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+  </script>
 
   <style>
     :root{
@@ -654,7 +673,7 @@
             <div class="campo"><label for="f-pax">Numero di passeggeri *</label><input id="f-pax" name="Passeggeri" type="number" min="1" inputmode="numeric" required></div>
             <div class="campo"><label for="f-esigenze">Esigenze particolari <span class="opz">(facoltativo)</span></label><input id="f-esigenze" name="Esigenze particolari" type="text" placeholder="Es. carrozzina, bagagli, seggiolino"></div>
             <div class="campo full"><label for="f-msg">Messaggio aggiuntivo <span class="opz">(facoltativo)</span></label><textarea id="f-msg" name="Messaggio"></textarea></div>
-            <label class="privacy full"><input type="checkbox" id="f-privacy" required> <span>Ho letto l'<a href="#" data-placeholder="LINK PRIVACY POLICY">informativa privacy</a> e acconsento al trattamento dei dati per ricevere il preventivo. *</span></label>
+            <label class="privacy full"><input type="checkbox" id="f-privacy" required> <span>Ho letto l'<a href="/privacy.html" target="_blank">informativa privacy</a> e acconsento al trattamento dei dati per ricevere il preventivo. *</span></label>
             <div class="full"><button type="submit" class="btn btn-notte">Prepara la richiesta <svg><use href="#i-arrow"/></svg></button></div>
           </div>
         </form>
@@ -700,19 +719,18 @@
       </div>
       <div>
         <h4>Seguici</h4>
-        <!-- Lasciare solo i social che il cliente usa davvero -->
         <div class="social">
-          <a href="[LINK INSTAGRAM]" aria-label="Instagram" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg></a>
-          <a href="[LINK FACEBOOK]" aria-label="Facebook" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg></a>
-          <a href="[LINK LINKEDIN]" aria-label="LinkedIn" target="_blank" rel="noopener"><svg><use href="#i-in"/></svg></a>
+          <a href="https://www.instagram.com/citytransfer2020/" aria-label="Instagram" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg></a>
+          <a href="https://www.facebook.com/profile.php?id=61596552343853" aria-label="Facebook" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg></a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span id="anno">2026</span> [RAGIONE SOCIALE] · P.IVA [P.IVA]</span>
+      <span>© <span id="anno">2026</span> CITYTRANSFER DI DOMENICO MICILLO · Via Francesco Antonio Pigafetta 1, 36078 Valdagno (VI) · P.IVA 04645760242</span>
       <div class="legal">
-        <a href="#" data-placeholder="LINK PRIVACY POLICY">Privacy Policy</a>
-        <a href="#" data-placeholder="LINK COOKIE POLICY">Cookie Policy</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/cookie-policy.html">Cookie Policy</a>
+        <a href="#" data-cc="show-preferencesModal">Preferenze cookie</a>
       </div>
     </div>
   </div>
@@ -796,5 +814,7 @@
     result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   });
 </script>
+<script src="/vendor/cookieconsent.umd.js"></script>
+<script src="/consent.js"></script>
 </body>
 </html>

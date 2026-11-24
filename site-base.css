@@ -1,0 +1,48 @@
+/* Font ospitati sul sito (nessuna chiamata a Google Fonts) */
+@font-face{font-family:'DM Serif Display';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/dm-serif-display-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'DM Serif Display';font-style:italic;font-weight:400;font-display:swap;src:url('/fonts/dm-serif-display-latin-400-italic.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/inter-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/inter-latin-500-normal.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/inter-latin-600-normal.woff2') format('woff2')}
+
+/* Banner cookie nei colori del sito */
+#cc-main{
+  --cc-font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --cc-modal-border-radius:14px;
+  --cc-btn-border-radius:999px;
+  --cc-bg:#101C2C;
+  --cc-primary-color:#F8F8F5;
+  --cc-secondary-color:rgba(248,248,245,.78);
+  --cc-btn-primary-bg:#C5A675;
+  --cc-btn-primary-color:#101C2C;
+  --cc-btn-primary-border-color:#C5A675;
+  --cc-btn-primary-hover-bg:#d4b98c;
+  --cc-btn-primary-hover-color:#101C2C;
+  --cc-btn-primary-hover-border-color:#d4b98c;
+  --cc-btn-secondary-bg:#24465A;
+  --cc-btn-secondary-color:#F8F8F5;
+  --cc-btn-secondary-border-color:#24465A;
+  --cc-btn-secondary-hover-bg:#2d5870;
+  --cc-btn-secondary-hover-color:#F8F8F5;
+  --cc-btn-secondary-hover-border-color:#2d5870;
+  --cc-separator-border-color:rgba(248,248,245,.12);
+  --cc-toggle-on-bg:#C5A675;
+  --cc-toggle-off-bg:#55606E;
+  --cc-toggle-on-knob-bg:#101C2C;
+  --cc-toggle-off-knob-bg:#F8F8F5;
+  --cc-toggle-readonly-bg:#24465A;
+  --cc-toggle-readonly-knob-bg:#F8F8F5;
+  --cc-cookie-category-block-bg:#0B1420;
+  --cc-cookie-category-block-border:#24465A;
+  --cc-cookie-category-block-hover-bg:#132235;
+  --cc-cookie-category-block-hover-border:#24465A;
+  --cc-cookie-category-expanded-block-bg:#0B1420;
+  --cc-cookie-category-expanded-block-hover-bg:#132235;
+  --cc-overlay-bg:rgba(11,20,32,.7);
+  --cc-footer-bg:#0B1420;
+  --cc-footer-color:rgba(248,248,245,.7);
+  --cc-footer-border-color:rgba(248,248,245,.12);
+  --cc-link-color:#C5A675;
+}
+#cc-main .cm__title,#cc-main .pm__title{font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:1.35em}
+#cc-main .cm__btn,#cc-main .pm__btn{text-transform:uppercase;letter-spacing:.1em;font-size:.78rem}
