@@ -851,6 +851,21 @@
     document.getElementById('send-mail').href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Richiesta preventivo – City Transfer') + '&body=' + encodeURIComponent(testo);
     result.hidden = false;
     result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    traccia('preventivo_compilato');
+  });
+
+  // Statistiche: conta i clic su Chiama, WhatsApp ed Email (solo se il visitatore ha accettato i cookie statistici)
+  function traccia(evento, dati) {
+    if (typeof window.gtag === 'function') window.gtag('event', evento, dati || {});
+  }
+  document.addEventListener('click', e => {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    const dalModulo = !!link.closest('#form-result');
+    if (href.startsWith('tel:')) traccia('clic_chiama');
+    else if (href.includes('wa.me/')) traccia('clic_whatsapp', { dal_modulo: dalModulo ? 'si' : 'no' });
+    else if (href.startsWith('mailto:')) traccia('clic_email', { dal_modulo: dalModulo ? 'si' : 'no' });
   });
 </script>
 <script src="/vendor/cookieconsent.umd.js"></script>
